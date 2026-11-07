@@ -1,0 +1,43 @@
+{
+  "name": "check_trades",
+  "description": "Before placing an order, state which of the owner's own Allocait rules the proposed change would put outside range or leave further outside. Send only the trades; the bot's own code adds the prices. A result inside every range does not say a change is advisable. Allocait cannot approve, stop or place an order.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "trades": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 50,
+        "items": {
+          "type": "object",
+          "properties": {
+            "symbol": {
+              "type": "string",
+              "description": "A ticker, or a pair written BASE/USD."
+            },
+            "side": {
+              "type": "string",
+              "enum": ["BUY", "SELL"]
+            },
+            "shares": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "Units; fractions allowed. Send this or notional."
+            },
+            "notional": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "Dollars. Send this or shares."
+            },
+            "asset_class": {
+              "type": "string",
+              "description": "Needed only for a symbol not held yet, e.g. Equities or Crypto."
+            }
+          },
+          "required": ["symbol", "side"]
+        }
+      }
+    },
+    "required": ["trades"]
+  }
+}
