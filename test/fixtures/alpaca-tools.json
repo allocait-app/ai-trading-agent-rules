@@ -1,0 +1,22 @@
+{
+  "source": "The Alpaca MCP connector's tool schemas and Alpaca's own server's tool list, read 2026-11-14. Every tool here writes to the account. A tool with an inert reason has no rule in hooks/presets/alpaca.json on purpose.",
+  "tools": {
+    "place_stock_order": { "keys": ["symbol", "side", "qty", "notional", "type", "time_in_force", "limit_price", "stop_price", "trail_price", "trail_percent", "order_class", "take_profit_limit_price", "stop_loss_stop_price", "stop_loss_limit_price", "extended_hours", "client_order_id", "advanced_instructions"] },
+    "place_crypto_order": { "keys": ["symbol", "side", "qty", "notional", "type", "time_in_force", "limit_price", "stop_price", "client_order_id"] },
+    "place_option_order": { "keys": ["qty", "symbol", "side", "legs", "position_intent", "type", "time_in_force", "limit_price", "order_class", "client_order_id"] },
+    "close_position": { "keys": ["symbol_or_asset_id", "qty", "percentage"] },
+    "close_all_positions": { "keys": ["cancel_orders"] },
+    "replace_order_by_id": { "keys": ["order_id", "qty", "notional", "limit_price", "stop_price", "trail", "time_in_force", "client_order_id", "advanced_instructions"] },
+    "exercise_options_position": { "keys": ["symbol_or_contract_id"] },
+    "do_not_exercise_options_position": { "keys": ["symbol_or_contract_id"] },
+    "update_account_config": { "keys": ["no_shorting", "suspend_trade", "max_margin_multiplier", "max_options_trading_level", "fractional_trading", "disable_overnight_trading", "trade_confirm_email", "ptp_no_exception_entry", "pdt_check", "dtbp_check"] },
+    "cancel_order_by_id": { "keys": ["order_id"], "inert": "Removes an open order and opens no position. It can remove a stop order the owner set, which docs/HOOK.md lists as not covered." },
+    "cancel_all_orders": { "keys": [], "inert": "Removes open orders and opens no position. It can remove a stop order the owner set, which docs/HOOK.md lists as not covered." },
+    "create_watchlist": { "keys": ["name", "symbols"], "inert": "A list of symbols on the Alpaca side. It places no order." },
+    "update_watchlist_by_id": { "keys": ["watchlist_id", "name", "symbols"], "inert": "A list of symbols on the Alpaca side. It places no order." },
+    "delete_watchlist_by_id": { "keys": ["watchlist_id"], "inert": "A list of symbols on the Alpaca side. It places no order." },
+    "add_asset_to_watchlist_by_id": { "keys": ["watchlist_id", "symbol"], "inert": "A list of symbols on the Alpaca side. It places no order." },
+    "remove_asset_from_watchlist_by_id": { "keys": ["watchlist_id", "symbol"], "inert": "A list of symbols on the Alpaca side. It places no order." },
+    "create_locate": { "keys": [], "inert": "Alpaca's own server lists it for a short sale and says it is not available in paper trading. The hosted connector has no such tool. It places no order." }
+  }
+}

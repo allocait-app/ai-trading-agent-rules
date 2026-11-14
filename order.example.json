@@ -1,6 +1,6 @@
 {
   "trades": [
     { "symbol": "ALFA", "side": "BUY", "shares": 7 },
-    { "symbol": "ECHO/USD", "side": "BUY", "notional": 251, "asset_class": "Crypto" }
+    { "symbol": "ECHO/USD", "side": "BUY", "notional": 751, "asset_class": "Crypto" }
   ]
 }

@@ -1,0 +1,12 @@
+{
+  "name": "ai-trading-agent-rules",
+  "displayName": "Rules for AI Trading Agents",
+  "version": "0.1.0",
+  "description": "Claude checks an Alpaca paper order against rules you wrote in Allocait, and the skill tells Claude to ask you before it places the order. An open-source example from the Allocait team, shared as is. Not an Allocait product.",
+  "author": { "name": "RidgeXAI" },
+  "homepage": "https://github.com/allocait-app/ai-trading-agent-rules",
+  "repository": "https://github.com/allocait-app/ai-trading-agent-rules",
+  "license": "MIT",
+  "icon": "./brand/icon-512.png",
+  "keywords": ["allocait", "alpaca", "claude", "paper-trading", "order-check", "hook", "skill", "example"]
+}

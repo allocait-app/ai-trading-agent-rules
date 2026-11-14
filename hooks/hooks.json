@@ -1,0 +1,18 @@
+{
+  "description": "A script on your machine. It refuses an Alpaca order tool call that has no matching check_trades result in this session, and in the default and acceptEdits permission modes it asks you before a matched order runs. It does not promise to stop an order.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "(^|__)(place_[a-z_]+|close_position|close_all_positions|replace_order_by_id|exercise_options_position|do_not_exercise_options_position|update_account_config)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/require-check.mjs\"",
+            "timeout": 30,
+            "onFailure": "block"
+          }
+        ]
+      }
+    ]
+  }
+}

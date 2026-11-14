@@ -1,0 +1,14 @@
+{
+  "account": {
+    "data": { "cash": "4118.60", "equity": "10321.55" }
+  },
+  "positions": {
+    "data": {
+      "result": [
+        { "symbol": "ALFA", "qty": "61", "current_price": "41.37", "market_value": "2523.57", "asset_class": "us_equity", "side": "long" },
+        { "symbol": "BRAV", "qty": "37.5", "current_price": "93.11", "market_value": "3491.625", "asset_class": "us_equity", "side": "long" },
+        { "symbol": "ECHOUSD", "qty": "2.5", "current_price": "75.1", "market_value": "187.75", "asset_class": "crypto", "side": "long" }
+      ]
+    }
+  }
+}

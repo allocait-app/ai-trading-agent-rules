@@ -1,5 +1,5 @@
 {
-  "name": "allocait-trading-agent-example",
+  "name": "ai-trading-agent-rules",
   "version": "0.1.0",
   "private": true,
   "description": "Check a proposed order against your own Allocait rules before your bot places it. Zero dependencies.",
@@ -9,8 +9,8 @@
     "node": ">=22.9"
   },
   "scripts": {
-    "check": "node --env-file-if-exists=.env check.mjs order.example.json",
-    "bot": "node --env-file-if-exists=.env bot.mjs order.example.json",
-    "test": "node --test \"test/*.test.mjs\""
+    "test": "node --test \"test/*.test.mjs\"",
+    "test:py": "python3 -m unittest discover -s python",
+    "skill:zip": "node scripts/zip-skill.mjs"
   }
 }

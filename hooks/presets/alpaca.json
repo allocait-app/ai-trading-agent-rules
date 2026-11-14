@@ -1,0 +1,31 @@
+{
+  "dated": "2026-11-14",
+  "source": "Alpaca MCP Server README and the Alpaca connectors' tool schemas, read 2026-11-14",
+  "tools": {
+    "place_stock_order": { "kind": "order", "attended": true, "symbolKey": "symbol", "needs": ["client_order_id"] },
+    "place_crypto_order": { "kind": "order", "attended": true, "symbolKey": "symbol", "needs": ["client_order_id"] },
+    "place_option_order": { "kind": "legs", "attended": true, "multiplier": 100, "needs": ["client_order_id"] },
+    "close_position": {
+      "kind": "close",
+      "attended": true,
+      "symbolKey": "symbol_or_asset_id",
+      "side": "SELL",
+      "occMultiplier": 100,
+      "message": "close_position with a percentage, an asset id or no qty cannot be matched to a check. Ask the owner which quantity of one symbol to close."
+    },
+    "close_all_positions": {
+      "kind": "deny",
+      "message": "No single check covers closing every holding. Ask the owner which holdings they want closed."
+    },
+    "replace_order_by_id": {
+      "kind": "replace",
+      "denyKeys": ["qty", "notional"],
+      "message": "A new quantity is a new order. Ask the owner whether to cancel this order and place a new one."
+    },
+    "exercise_options_position": { "kind": "ask", "message": "Exercising turns a contract into shares. No check covers it." },
+    "do_not_exercise_options_position": { "kind": "ask", "message": "This instruction lets a contract expire. No check covers it." },
+    "update_account_config": { "kind": "ask", "message": "This changes account settings such as shorting or margin. No check covers it." }
+  },
+  "unknownPlace": "A place_ tool this preset has no rule for. No check can be matched to it.",
+  "needsExample": "ac-<date>-<symbol without slash, lower case>-<side>-<quantity>-<n>"
+}

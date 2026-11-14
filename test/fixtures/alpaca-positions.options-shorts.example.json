@@ -1,0 +1,15 @@
+{
+  "today": "2026-11-14",
+  "account": {
+    "data": { "cash": "9217.43", "equity": "9497.81" }
+  },
+  "positions": {
+    "data": {
+      "result": [
+        { "symbol": "ALFA", "qty": "37", "current_price": "41.37", "market_value": "1530.69", "asset_class": "us_equity", "side": "long" },
+        { "symbol": "ALFA261218C00050000", "qty": "3", "current_price": "2.35", "market_value": "705", "asset_class": "us_option", "side": "long" },
+        { "symbol": "BRAV", "qty": "-21", "current_price": "93.11", "market_value": "-1955.31", "asset_class": "us_equity", "side": "short" }
+      ]
+    }
+  }
+}

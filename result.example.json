@@ -1,0 +1,45 @@
+{
+  "portfolio_id": "5b1d7e3a-9c41-4f07-8d23-6e9a1c5f0b37",
+  "scenario_id": "a3c9e5f1-7b2d-4e61-9f05-1d7b3e9c5a73",
+  "within_rules": false,
+  "newly_or_further_outside_count": 1,
+  "rules_judged_count": 4,
+  "rules": [
+    {
+      "kind": "class_band",
+      "symbol": null,
+      "asset_class_id": "e7f1a9c3-5d2b-4b81-a6e3-9c5f1d7b3e19",
+      "asset_class": "Crypto",
+      "min_pct": 0,
+      "max_pct": 7,
+      "before_pct": 0,
+      "after_pct": 7.29,
+      "before_status": "COMPLIANT",
+      "after_status": "ABOVE_MAX",
+      "gap_before_pts": 0,
+      "gap_after_pts": 0.29,
+      "change": "newly_outside"
+    }
+  ],
+  "not_covered": [
+    { "symbol": "ECHO/USD", "asset_class": "Crypto", "reason": "NO_SIZE_RANGE", "traded": true }
+  ],
+  "trades": [
+    { "index": 0, "symbol": "ALFA", "side": "BUY", "shares": 7, "price": 41.37, "notional": 289.59, "shares_before": 61, "shares_after": 68 },
+    { "index": 1, "symbol": "ECHO/USD", "side": "BUY", "shares": 235.423197, "price": 3.19, "notional": 751, "shares_before": 0, "shares_after": 235.423197 }
+  ],
+  "cash": { "before": 4332.73, "after": 3292.14, "sufficient": true },
+  "total_value": 10301.37,
+  "exposure_after": {
+    "total_value": 10301.37,
+    "long_pct": 68.04,
+    "short_pct": 0,
+    "net_pct": 68.04,
+    "gross_pct": 68.04,
+    "options_counted": 0,
+    "options_not_counted": 0
+  },
+  "positions_updated_at": "2026-11-03T15:17:09Z",
+  "basis": "Computed from this rule set's saved ranges, the holdings Allocait has recorded, and the prices you supplied. Taxes, fees, liquidity and accounts outside Allocait are not considered.",
+  "checked_at": "2026-11-03T15:19:41Z"
+}

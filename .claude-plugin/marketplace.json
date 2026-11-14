@@ -1,0 +1,12 @@
+{
+  "name": "allocait-examples",
+  "owner": { "name": "RidgeXAI" },
+  "description": "Open-source example from the Allocait team, shared as is. Not an Allocait product or service. Not made or endorsed by Alpaca or Anthropic.",
+  "plugins": [
+    {
+      "name": "ai-trading-agent-rules",
+      "source": "./",
+      "description": "Claude checks an Alpaca paper order against rules you wrote in Allocait, and the skill tells Claude to ask you before it places the order."
+    }
+  ]
+}
