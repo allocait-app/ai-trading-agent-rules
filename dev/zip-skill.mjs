@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Builds ai-trading-agent-rules.zip from skills/ai-trading-agent-rules/ for claude.ai's "Upload a skill". Node's own zlib, no
 // dependency. The bytes are fixed (stored entries, fixed timestamp, sorted names), so a second run writes the same file
-// and test/skill.test.mjs can require that the committed zip is what this script writes. Needs Node 22.2 or later
-// (zlib.crc32). Run: node scripts/zip-skill.mjs. Pass --check to compare without writing.
+// and dev/skill.test.mjs can require that the committed zip is what this script writes. Needs Node 22.2 or later
+// (zlib.crc32). Run: node dev/zip-skill.mjs. Pass --check to compare without writing.
 import { readFileSync, readdirSync, writeFileSync, existsSync, realpathSync } from 'node:fs'
 import { crc32 } from 'node:zlib'
 import { fileURLToPath } from 'node:url'
@@ -72,7 +72,7 @@ if (process.argv[1] && realpathSync(fileURLToPath(import.meta.url)) === realpath
   const bytes = zipBytes(skillFiles())
   if (process.argv.includes('--check')) {
     if (!existsSync(ZIP) || !readFileSync(ZIP).equals(bytes)) {
-      process.stderr.write(`${SKILL}.zip is not what skills/${SKILL}/ builds. Run: node scripts/zip-skill.mjs\n`)
+      process.stderr.write(`${SKILL}.zip is not what skills/${SKILL}/ builds. Run: node dev/zip-skill.mjs\n`)
       process.exit(1)
     }
   } else writeFileSync(ZIP, bytes)

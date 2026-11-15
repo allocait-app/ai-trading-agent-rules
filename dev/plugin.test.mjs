@@ -6,7 +6,7 @@ const read = (p) => JSON.parse(readFileSync(new URL(`../${p}`, import.meta.url),
 const hooks = read('hooks/hooks.json')
 const settings = read('hooks/settings.example.json')
 const preset = read('hooks/presets/alpaca.json')
-const fixture = read('test/fixtures/alpaca-tools.json')
+const fixture = read('dev/fixtures/alpaca-tools.json')
 const plugin = read('.claude-plugin/plugin.json')
 const market = read('.claude-plugin/marketplace.json')
 

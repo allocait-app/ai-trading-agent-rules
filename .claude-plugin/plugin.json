@@ -7,6 +7,6 @@
   "homepage": "https://github.com/allocait-app/ai-trading-agent-rules",
   "repository": "https://github.com/allocait-app/ai-trading-agent-rules",
   "license": "MIT",
-  "icon": "./brand/icon-512.png",
+  "icon": "./images/brand/icon-512.png",
   "keywords": ["allocait", "alpaca", "claude", "paper-trading", "order-check", "hook", "skill", "example"]
 }

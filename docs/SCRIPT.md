@@ -1,8 +1,8 @@
 # The script bot
 
-Reference for [Rules for AI Trading Agents](../README.md). A second path, for people with REST keys and no connector. The folder holds a script bot in JavaScript and Python (`python/`). It needs no install: Node 22.9 or later, or the Python standard library.
+Reference for [Rules for AI Trading Agents](../README.md). A second path, for people with REST keys and no connector. The `script/` folder holds a script bot in JavaScript and Python (`script/python/`). It needs no install: Node 22.9 or later, or the Python standard library.
 
-`node check.mjs --demo` prints a saved result with no account, no key and no network. `check.mjs` reads an order from a file or stdin and exits:
+From the repo root, `node script/check.mjs --demo` prints a saved result with no account, no key and no network. The rest of this page runs from inside `script/` (`cd script`). `check.mjs` reads an order from a file or stdin and exits:
 
 | Exit | Meaning |
 | --- | --- |

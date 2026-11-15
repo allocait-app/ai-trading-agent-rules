@@ -1,10 +1,14 @@
 // Price sources. A source is one function, (symbols) => ({ SYMBOL: price }), that leaves out what it cannot
 // price. Allocait supplies no prices, so the bot brings its own. Add yours with the same shape. Pairs are BASE/USD.
 import { readFile } from 'node:fs/promises'
+import { fileURLToPath } from 'node:url'
 import { alpacaHeaders } from './alpaca.mjs'
 import { guarded } from './http.mjs'
 
 const priced = (map, s) => map[s] > 0
+
+// The default price file sits beside the scripts and is found from any working directory. A path you set is read as you wrote it.
+const DEFAULT_SOURCE = `file:${fileURLToPath(new URL('../prices.example.json', import.meta.url))}`
 
 /** A JSON file you keep: { "SYMBOL": 123.45 }. */
 export async function fromFile(path, symbols) {
@@ -45,7 +49,7 @@ const SOURCES = { coinbase: fromCoinbase, alpaca: fromAlpaca }
  * The source PRICE_SOURCE names: file:<path>, coinbase or alpaca. A comma list tries each in turn for what the
  * earlier ones left out (coinbase,file:prices.json). Throws naming every symbol no source priced.
  */
-export function source(spec = process.env.PRICE_SOURCE || 'file:prices.example.json') {
+export function source(spec = process.env.PRICE_SOURCE || DEFAULT_SOURCE) {
   const chain = spec.split(',').map((s) => s.trim()).map((s) => {
     if (s.startsWith('file:')) return (symbols) => fromFile(s.slice(5), symbols)
     if (SOURCES[s]) return SOURCES[s]

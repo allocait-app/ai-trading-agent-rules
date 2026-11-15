@@ -6,7 +6,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { inflateRawSync } from 'node:zlib'
-import { zipBytes, skillFiles } from '../scripts/zip-skill.mjs'
+import { zipBytes, skillFiles } from './zip-skill.mjs'
 
 const ROOT = new URL('../', import.meta.url)
 const SKILL_DIR = new URL('skills/ai-trading-agent-rules/', ROOT)
@@ -297,7 +297,7 @@ test('the committed zip is what zip-skill builds from the skill folder, twice', 
   for (const f of folder) assert.ok(entries[`ai-trading-agent-rules/${f}`].equals(readFileSync(new URL(f, SKILL_DIR))), f)
   const first = zipBytes(skillFiles())
   assert.ok(first.equals(zipBytes(skillFiles())), 'same bytes on a second build')
-  assert.ok(readFileSync(zipPath).equals(first), 'the committed zip is stale: run node scripts/zip-skill.mjs')
+  assert.ok(readFileSync(zipPath).equals(first), 'the committed zip is stale: run node dev/zip-skill.mjs')
 })
 
 test('unzip reads the zip back as the skill folder, byte for byte (skipped when unzip is not installed)', (t) => {
@@ -317,13 +317,13 @@ test('zip-skill --check exits 1 on a stale zip', () => {
   const dir = mkdtempSync(join(tmpdir(), 'zipcheck-'))
   try {
     // A copy of the script and a skill folder whose zip does not exist yet.
-    const script = readFileSync(new URL('scripts/zip-skill.mjs', ROOT), 'utf8')
-    spawnSync('mkdir', ['-p', join(dir, 'scripts'), join(dir, 'skills/ai-trading-agent-rules')])
-    writeFileSync(join(dir, 'scripts/zip-skill.mjs'), script)
+    const script = readFileSync(new URL('dev/zip-skill.mjs', ROOT), 'utf8')
+    spawnSync('mkdir', ['-p', join(dir, 'dev'), join(dir, 'skills/ai-trading-agent-rules')])
+    writeFileSync(join(dir, 'dev/zip-skill.mjs'), script)
     writeFileSync(join(dir, 'skills/ai-trading-agent-rules/SKILL.md'), 'x')
-    const r = spawnSync('node', [join(dir, 'scripts/zip-skill.mjs'), '--check'], { encoding: 'utf8' })
+    const r = spawnSync('node', [join(dir, 'dev/zip-skill.mjs'), '--check'], { encoding: 'utf8' })
     assert.equal(r.status, 1)
-    assert.match(r.stderr, /node scripts\/zip-skill\.mjs/)
+    assert.match(r.stderr, /node dev\/zip-skill\.mjs/)
   } finally {
     rmSync(dir, { recursive: true, force: true })
   }

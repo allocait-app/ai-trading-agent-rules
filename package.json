@@ -2,15 +2,15 @@
   "name": "ai-trading-agent-rules",
   "version": "0.1.0",
   "private": true,
-  "description": "Check a proposed order against your own Allocait rules before your bot places it. Zero dependencies.",
+  "description": "Claude checks an Alpaca paper order against your own Allocait rules, and the skill tells it to ask you before it places the order. Zero dependencies.",
   "type": "module",
   "license": "MIT",
   "engines": {
     "node": ">=22.9"
   },
   "scripts": {
-    "test": "node --test \"test/*.test.mjs\"",
-    "test:py": "python3 -m unittest discover -s python",
-    "skill:zip": "node scripts/zip-skill.mjs"
+    "test": "node --test \"dev/*.test.mjs\" \"script/test/*.test.mjs\"",
+    "test:py": "python3 -m unittest discover -s script/python",
+    "skill:zip": "node dev/zip-skill.mjs"
   }
 }

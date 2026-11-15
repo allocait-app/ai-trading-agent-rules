@@ -1,6 +1,6 @@
-// Writes every SVG in images/ and brand/. No dependencies.
-//   node brand/build.mjs                    the real files
-//   node brand/build.mjs --out DIR --arial  every file in DIR, set in Arial, to check that nothing overflows
+// Writes every SVG in images/ and images/brand/. No dependencies.
+//   node images/brand/build.mjs                    the real files
+//   node images/brand/build.mjs --out DIR --arial  every file in DIR, set in Arial, to check that nothing overflows
 // Text is live and uses the system font stack: no external font, image or script, so GitHub renders it as is.
 import { mkdirSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -9,7 +9,7 @@ import { parseArgs } from 'node:util'
 
 const { values: args } = parseArgs({ options: { out: { type: 'string' }, arial: { type: 'boolean' } } })
 const BRAND = dirname(fileURLToPath(import.meta.url))
-const IMAGES = join(BRAND, '..', 'images')
+const IMAGES = join(BRAND, '..')
 const FONT = args.arial
   ? 'Arial, sans-serif'
   : "Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"

@@ -37,7 +37,7 @@ Never write "not affiliated with Allocait": the example runs on Allocait's own c
 | Marker (bar, disc, arrows) | `#111827` | `#f4f4f5` |
 | Wing mark | `#0b0b0b` | `#ffc629` |
 
-Contrast (WCAG AA body text needs 4.5): text on ground 17.0 light, 18.1 dark; text on card 17.7 and 16.1; secondary on ground 7.2 and 7.8; secondary on card 7.6 and 6.9; wing mark on ground 18.8 and 12.7; icon glyph on tile 17.9. Figures come from `node brand/build.mjs`.
+Contrast (WCAG AA body text needs 4.5): text on ground 17.0 light, 18.1 dark; text on card 17.7 and 16.1; secondary on ground 7.2 and 7.8; secondary on card 7.6 and 6.9; wing mark on ground 18.8 and 12.7; icon glyph on tile 17.9. Figures come from `node images/brand/build.mjs`.
 
 Type is Inter, then the system stack (`Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`), live text, tabular where numbers sit in a column. GitHub readers see their system sans. Every line was checked in Arial for overflow. Radii: cards 12 px (24 units at the 2x size), pills round, 1 px hairline. No glow, shadow, divider line, tint wash or gradient. No green, red, orange or blue.
 
@@ -46,11 +46,11 @@ Type is Inter, then the system stack (`Inter, system-ui, -apple-system, BlinkMac
 | File | Size | Use |
 | --- | --- | --- |
 | `images/hero.svg`, `images/hero-dark.svg` | 1760 x 760, shown at 880 | README top: the chat, the title, the notice, and a line that the symbols and numbers are made up |
-| `images/flow.svg`, `images/flow-dark.svg` | 1760 x 880, shown at 880 | README "How it works": seven steps. Put the steps in the README as a numbered list too |
-| `brand/social-preview.svg`, `.png` | 1280 x 640, solid dark | Set by hand in the repository settings |
-| `brand/icon.svg`, `icon-512.png` | 128, 512 | Plugin icon source and export, with transparent corners (RGBA) |
-| `brand/tile.svg` | 128 | Spare: light tile of the same glyph, for dark grounds. Nothing uses it yet |
-| `brand/lockup.svg`, `lockup-dark.svg` | 1000 x 200, transparent | Spare, for a docs header: tile, title, "Open-source example" label. Nothing uses them yet |
+| `images/flow.svg`, `images/flow-dark.svg` | 1760 x 880, shown at 880 | docs/HOW-IT-WORKS.md "A run, start to finish": seven steps. Put the steps beside it as a numbered list too |
+| `images/brand/social-preview.svg`, `.png` | 1280 x 640, solid dark | Set by hand in the repository settings |
+| `images/brand/icon.svg`, `icon-512.png` | 128, 512 | Plugin icon source and export, with transparent corners (RGBA) |
+| `images/brand/tile.svg` | 128 | Spare: light tile of the same glyph, for dark grounds. Nothing uses it yet |
+| `images/brand/lockup.svg`, `lockup-dark.svg` | 1000 x 200, transparent | Spare, for a docs header: tile, title, "Open-source example" label. Nothing uses them yet |
 
 Embed: `<picture><source media="(prefers-color-scheme: dark)" srcset="images/hero-dark.svg"><img src="images/hero.svg" width="880" alt="..."></picture>`
 
@@ -71,6 +71,6 @@ Embed: `<picture><source media="(prefers-color-scheme: dark)" srcset="images/her
 
 ## Rebuild
 
-`node brand/build.mjs` writes every SVG (add `--out DIR --arial` to test in Arial). `node brand/render.mjs [DIR]` writes `social-preview.png` (1280 x 640) and `icon-512.png` (transparent corners) with headless Chrome; the window size must equal the SVG size. Every output path is absolute: Chrome writes `screenshot.png` into the working directory when it gets none, and that file must never be committed.
+`node images/brand/build.mjs` writes every SVG (add `--out DIR --arial` to test in Arial). `node images/brand/render.mjs [DIR]` writes `social-preview.png` (1280 x 640) and `icon-512.png` (transparent corners) with headless Chrome; the window size must equal the SVG size. Every output path is absolute: Chrome writes `screenshot.png` into the working directory when it gets none, and that file must never be committed.
 
 Not verified: how GitHub draws these SVGs (checked in Chrome only), the title as outlined paths (no font tool on hand, so text is live), and Alpaca's and Anthropic's rules for third-party names beyond plain text.

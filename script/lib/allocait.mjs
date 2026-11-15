@@ -106,7 +106,7 @@ export function formatResult(r) {
 /**
  * --demo: the saved example result, read from result.example.json and printed through formatResult like a real one.
  * Nothing is computed here: the file is a result in the shape POST /trades/check returns, for order.example.json and
- * prices.example.json against the made-up book in the README, with made-up numbers.
+ * prices.example.json against the made-up book in docs/HOW-IT-WORKS.md, with made-up numbers.
  */
 export const DEMO_HEADER = [
   'Example result, saved in result.example.json. No account, no key, no network: nothing was checked.',

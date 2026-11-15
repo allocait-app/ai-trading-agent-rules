@@ -5,7 +5,7 @@
 //   node bot.mjs                            the same, for the order strategy.mjs proposes
 //   BROKER=alpaca node bot.mjs order.json   places it in your Alpaca paper account first
 //
-// With no one at the keyboard it places and records nothing. Exit status: see docs/SCRIPT.md.
+// With no one at the keyboard it places and records nothing. Exit status: see ../docs/SCRIPT.md.
 import { createInterface } from 'node:readline/promises'
 import { cli, readOrder } from './lib/allocait.mjs'
 import { run } from './lib/loop.mjs'

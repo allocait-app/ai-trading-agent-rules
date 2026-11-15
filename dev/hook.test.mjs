@@ -15,7 +15,7 @@ const readJson = async (p) => JSON.parse(await readFile(new URL(p, import.meta.u
 const preset = await readJson('../hooks/presets/alpaca.json')
 const skillText = await readFile(new URL('../skills/ai-trading-agent-rules/SKILL.md', import.meta.url), 'utf8')
 const fixture = await readJson('./fixtures/alpaca-tools.json')
-const saved = await readJson('../result.example.json')
+const saved = await readJson('../script/result.example.json')
 const inside = { ...saved, within_rules: true, newly_or_further_outside_count: 0, rules: [], not_covered: [] }
 const O = { preset }
 
@@ -316,7 +316,7 @@ test('every Alpaca write tool in the fixture has a preset rule or an inert reaso
   const ruled = new Set(Object.keys(preset.tools))
   for (const [name, t] of Object.entries(fixture.tools)) {
     const inert = typeof t.inert === 'string' && t.inert.length > 20
-    assert.ok(ruled.has(name) !== inert, `${name} needs a rule in hooks/presets/alpaca.json, or a reason on the inert list in test/fixtures/alpaca-tools.json (not both)`)
+    assert.ok(ruled.has(name) !== inert, `${name} needs a rule in hooks/presets/alpaca.json, or a reason on the inert list in dev/fixtures/alpaca-tools.json (not both)`)
   }
   for (const name of ruled) assert.ok(fixture.tools[name], `${name} is in the preset but not in the fixture`)
   // The keys a rule reads exist on the tool.

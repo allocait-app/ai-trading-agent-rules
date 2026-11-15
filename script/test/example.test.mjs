@@ -64,6 +64,15 @@ test('check with no portfolio id lists the portfolios', async () => {
   await assert.rejects(check({ trades: order.trades }, { api, prices }), /p9  Test/)
 })
 
+test('the default price file is found from any working directory', () => {
+  const lib = fileURLToPath(new URL('../lib/prices.mjs', import.meta.url))
+  const env = { ...process.env }
+  delete env.PRICE_SOURCE
+  const out = spawnSync(process.execPath, ['--input-type=module', '-e', `import { source } from ${JSON.stringify(lib)}; console.log(JSON.stringify(await source()(['ALFA'])))`], { cwd: tmpdir(), env, encoding: 'utf8' })
+  assert.equal(out.status, 0, out.stderr)
+  assert.ok(JSON.parse(out.stdout).ALFA > 0)
+})
+
 test('a price source chain fills from each in turn and names what none priced', async () => {
   const dir = await mkdtemp(join(tmpdir(), 'allocait-'))
   const [a, b] = [join(dir, 'a.json'), join(dir, 'b.json')]

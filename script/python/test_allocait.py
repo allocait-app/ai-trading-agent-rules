@@ -100,7 +100,13 @@ class CheckTest(unittest.TestCase):
                     prices_from_env({"PRICE_SOURCE": bad})
         finally:
             os.unlink(f.name)
-        self.assertIn("ALFA", prices_from_env({})(["ALFA"]))  # the default file resolves from any directory
+        # The default file resolves from any directory.
+        here = os.getcwd()
+        os.chdir(tempfile.gettempdir())
+        try:
+            self.assertIn("ALFA", prices_from_env({})(["ALFA"]))
+        finally:
+            os.chdir(here)
 
     def test_a_redirect_is_not_followed(self):
         self.assertIsNone(allocait._NoRedirect().redirect_request(None, None, 302, "Found", {}, "http://x"))

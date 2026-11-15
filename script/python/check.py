@@ -3,7 +3,7 @@
     python3 python/check.py order.example.json
     python3 python/check.py --demo        the saved example result (result.example.json): no account, no key, no network
 
-Exits 0, 1, 2 or 3 as check.mjs does (see the README). Prices come from PRICE_SOURCE=file:<path>, or from the
+Exits 0, 1, 2 or 3 as check.mjs does (see docs/SCRIPT.md). Prices come from PRICE_SOURCE=file:<path>, or from the
 order file's "prices" key, as in check.mjs.
 """
 import sys

@@ -1,6 +1,6 @@
-// Rasterizes brand/social-preview.svg to brand/social-preview.png (1280 x 640, solid ground) and brand/icon.svg to
-// brand/icon-512.png (transparent corners) with headless Chrome. The window size must equal the SVG's size.
-//   node brand/render.mjs [DIR]    with DIR, every SVG in images/ and brand/ is also written there as a PNG for review
+// Rasterizes images/brand/social-preview.svg to images/brand/social-preview.png (1280 x 640, solid ground) and images/brand/icon.svg to
+// images/brand/icon-512.png (transparent corners) with headless Chrome. The window size must equal the SVG's size.
+//   node images/brand/render.mjs [DIR]    with DIR, every SVG in images/ and images/brand/ is also written there as a PNG for review
 import { spawnSync } from 'node:child_process'
 import { mkdirSync, statSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -23,7 +23,7 @@ shot(join(HERE, 'social-preview.svg'), 1280, 640, 1, join(HERE, 'social-preview.
 shot(join(HERE, 'icon.svg'), 128, 128, 4, join(HERE, 'icon-512.png'), true)
 if (dir) {
   mkdirSync(dir, { recursive: true })
-  const img = (f) => join(HERE, '..', 'images', f)
+  const img = (f) => join(HERE, '..', f)
   shot(img('hero.svg'), 1760, 760, 1, join(dir, 'hero.png'))
   shot(img('hero-dark.svg'), 1760, 760, 1, join(dir, 'hero-dark.png'))
   shot(img('flow.svg'), 1760, 880, 1, join(dir, 'flow.png'))

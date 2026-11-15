@@ -64,7 +64,8 @@ def file_prices(path):
 def prices_from_env(env=None):
     """The price source PRICE_SOURCE names, the same variable the Node side reads. Only file:<path> here; for
     anything else, pass your own function to Allocait.check."""
-    spec = (env if env is not None else os.environ).get("PRICE_SOURCE") or "file:prices.example.json"
+    default = "file:" + os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "prices.example.json")
+    spec = (env if env is not None else os.environ).get("PRICE_SOURCE") or default
     if not spec.startswith("file:") or "," in spec:
         raise ValueError(f'PRICE_SOURCE "{spec}" is not supported in Python: use file:<path>, or pass a function of your own to check().')
     return file_prices(spec[5:])
